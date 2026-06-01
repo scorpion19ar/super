@@ -1,0 +1,20 @@
+# SuperPrecio.ar - robots.txt
+User-agent: *
+Allow: /
+Allow: /ofertas
+Allow: /searchgrouped
+Allow: /calculadora
+
+Disallow: /admin/
+Disallow: /superadmin/
+Disallow: /api/
+Disallow: /dev/
+Disallow: /b2b/
+Disallow: /google/
+Disallow: /devices/
+Disallow: /notifications/
+Disallow: /cart/update-quantity
+Disallow: /add
+Disallow: /remove
+
+Sitemap: https://superprecio.ar/sitemap.xml
