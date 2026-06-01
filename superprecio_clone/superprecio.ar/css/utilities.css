@@ -1,0 +1,641 @@
+/**
+ * SUPERPRECIO UTILITY CLASSES
+ * Version: 1.0.0
+ *
+ * Reusable utility classes for common UI patterns.
+ * Complements the design token system.
+ *
+ * All utilities use the .sp- prefix to avoid conflicts with Bootstrap.
+ */
+
+/* =============================================
+   TEXT UTILITIES
+   ============================================= */
+
+/* Text Truncation */
+.sp-text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Line Clamping - Multi-line truncation */
+.sp-line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sp-line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sp-line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Text Balance - Prevents awkward line breaks */
+.sp-text-balance {
+  text-wrap: balance;
+}
+
+/* Text Pretty - Avoids orphans */
+.sp-text-pretty {
+  text-wrap: pretty;
+}
+
+/* =============================================
+   NUMERIC UTILITIES
+   Tabular nums prevent layout shift when prices update
+   ============================================= */
+
+.sp-price,
+.price-box-price,
+.sp-product-card__price-value,
+.sp-hero__stat-value,
+.best-price-amount,
+.high-price-amount,
+.savings-amount,
+.sp-cart-page__total,
+[data-price],
+.cart-total-value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* =============================================
+   ACCESSIBILITY UTILITIES
+   ============================================= */
+
+/* Screen Reader Only - Visually hidden but accessible */
+.sp-sr-only,
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Screen Reader Only - Focusable variant */
+.sp-sr-only-focusable,
+.sr-only-focusable {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sp-sr-only-focusable:focus,
+.sp-sr-only-focusable:active,
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Skip to Content Link */
+.sp-skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: var(--sp-color-primary);
+  color: var(--sp-color-text-inverse);
+  padding: var(--sp-space-sm) var(--sp-space-md);
+  text-decoration: none;
+  border-radius: var(--sp-radius-md);
+  z-index: var(--sp-z-tooltip);
+  transition: top var(--sp-transition-fast);
+}
+
+.sp-skip-link:focus {
+  top: var(--sp-space-sm);
+}
+
+/* =============================================
+   FOCUS STYLES
+   Consistent focus indicators for accessibility
+   ============================================= */
+
+/* Focus Visible - Modern focus indicator */
+.sp-focus-visible:focus-visible,
+.sp-btn:focus-visible,
+.sp-link:focus-visible {
+  outline: 2px solid var(--sp-color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--sp-radius-sm);
+}
+
+/* Remove default focus styles when using custom */
+.sp-focus-visible:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Focus Ring - Alternative focus style */
+.sp-focus-ring:focus {
+  box-shadow: var(--sp-shadow-focus);
+  outline: none;
+}
+
+/* =============================================
+   LOADING & SKELETON STATES
+   ============================================= */
+
+/* Shimmer Loading Effect */
+.sp-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--sp-color-surface-2) 0%,
+    var(--sp-color-surface-3) 50%,
+    var(--sp-color-surface-2) 100%
+  );
+  background-size: 200% 100%;
+  animation: sp-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes sp-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Pulse Loading Effect */
+.sp-pulse {
+  animation: sp-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes sp-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Spinner - Loading indicator */
+.sp-spinner {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid var(--sp-color-border-light);
+  border-top-color: var(--sp-color-primary);
+  border-radius: var(--sp-radius-full);
+  animation: sp-spin 0.8s linear infinite;
+}
+
+.sp-spinner-sm {
+  width: 1rem;
+  height: 1rem;
+  border-width: 2px;
+}
+
+.sp-spinner-lg {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-width: 3px;
+}
+
+@keyframes sp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Skeleton Loader - For content placeholders */
+.sp-skeleton {
+  background-color: var(--sp-color-surface-2);
+  border-radius: var(--sp-radius-md);
+  animation: sp-skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes sp-skeleton-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* =============================================
+   ANIMATION UTILITIES
+   ============================================= */
+
+/* Fade In */
+.sp-fade-in {
+  animation: sp-fade-in var(--sp-transition-base) ease-in;
+}
+
+@keyframes sp-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide Up - For notifications and modals */
+.sp-slide-up {
+  animation: sp-slide-up var(--sp-transition-base) ease-out;
+}
+
+@keyframes sp-slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Slide Down */
+.sp-slide-down {
+  animation: sp-slide-down var(--sp-transition-base) ease-out;
+}
+
+@keyframes sp-slide-down {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Scale In - For popovers and tooltips */
+.sp-scale-in {
+  animation: sp-scale-in var(--sp-transition-fast) ease-out;
+}
+
+@keyframes sp-scale-in {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Bounce - For attention-grabbing elements */
+.sp-bounce {
+  animation: sp-bounce 1s ease-in-out;
+}
+
+@keyframes sp-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* =============================================
+   LAYOUT UTILITIES
+   ============================================= */
+
+/* Aspect Ratio Containers */
+.sp-aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+.sp-aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+.sp-aspect-portrait {
+  aspect-ratio: 3 / 4;
+}
+
+/* Container - Centered with max width */
+.sp-container {
+  width: 100%;
+  max-width: var(--sp-container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--sp-space-md);
+  padding-right: var(--sp-space-md);
+}
+
+/* Full Bleed - Break out of container */
+.sp-full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+/* =============================================
+   VISIBILITY UTILITIES
+   ============================================= */
+
+/* Hide visually and from screen readers */
+.sp-hidden {
+  display: none !important;
+}
+
+/* Hide only on mobile */
+@media (max-width: 767px) {
+  .sp-hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Hide only on desktop */
+@media (min-width: 768px) {
+  .sp-hide-desktop {
+    display: none !important;
+  }
+}
+
+/* =============================================
+   INTERACTION UTILITIES
+   ============================================= */
+
+/* Disable pointer events */
+.sp-pointer-events-none {
+  pointer-events: none;
+}
+
+/* Disable user selection */
+.sp-select-none {
+  user-select: none;
+}
+
+/* Smooth scrolling */
+.sp-scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but keep functionality */
+.sp-scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.sp-scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+/* =============================================
+   OVERLAY UTILITIES
+   ============================================= */
+
+/* Backdrop overlay - For modals */
+.sp-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--sp-color-surface-overlay);
+  z-index: var(--sp-z-modal-backdrop);
+  animation: sp-fade-in var(--sp-transition-fast) ease-in;
+}
+
+/* =============================================
+   BADGE UTILITIES
+   ============================================= */
+
+/* Badge - For notification counts */
+.sp-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 var(--sp-space-xs);
+  font-size: var(--sp-font-size-xs);
+  font-weight: var(--sp-font-weight-bold);
+  line-height: 1;
+  border-radius: var(--sp-radius-full);
+  background-color: var(--sp-color-danger);
+  color: var(--sp-color-text-inverse);
+}
+
+.sp-badge-sm {
+  min-width: 1rem;
+  height: 1rem;
+  font-size: 0.625rem;
+}
+
+/* =============================================
+   CARD UTILITIES
+   ============================================= */
+
+/* Card - Basic card component */
+.sp-card {
+  background-color: var(--sp-color-surface-base);
+  border: 1px solid var(--sp-color-border-light);
+  border-radius: var(--sp-radius-lg);
+  padding: var(--sp-space-lg);
+  box-shadow: var(--sp-shadow-sm);
+  transition: box-shadow var(--sp-transition-fast),
+              transform var(--sp-transition-fast);
+}
+
+.sp-card:hover {
+  box-shadow: var(--sp-shadow-md);
+  transform: translateY(-2px);
+}
+
+.sp-card-elevated {
+  box-shadow: var(--sp-shadow-lg);
+}
+
+/* =============================================
+   DIVIDER UTILITIES
+   ============================================= */
+
+/* Horizontal divider */
+.sp-divider {
+  height: 1px;
+  background-color: var(--sp-color-border-light);
+  border: none;
+  margin: var(--sp-space-lg) 0;
+}
+
+/* Vertical divider */
+.sp-divider-vertical {
+  width: 1px;
+  height: 100%;
+  background-color: var(--sp-color-border-light);
+  border: none;
+  margin: 0 var(--sp-space-md);
+  display: inline-block;
+}
+
+/* =============================================
+   GRADIENT UTILITIES
+   ============================================= */
+
+/* Text gradient effect */
+.sp-gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--sp-color-primary) 0%,
+    var(--sp-color-primary-light) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* =============================================
+   GLASSMORPHISM EFFECT
+   Modern frosted glass look
+   ============================================= */
+
+.sp-glass {
+  background-color: var(--sp-color-surface-frosted);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* =============================================
+   SAFE AREA UTILITIES
+   For devices with notches (iPhone X+)
+   ============================================= */
+
+.sp-safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.sp-safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.sp-safe-left {
+  padding-left: env(safe-area-inset-left);
+}
+
+.sp-safe-right {
+  padding-right: env(safe-area-inset-right);
+}
+
+/* =============================================
+   PRINT UTILITIES
+   ============================================= */
+
+@media print {
+  .sp-print-hidden {
+    display: none !important;
+  }
+
+  .sp-print-only {
+    display: block !important;
+  }
+}
+
+/* =============================================
+   REDUCED MOTION UTILITIES
+   Respects user preferences
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-shimmer,
+  .sp-pulse,
+  .sp-spinner,
+  .sp-fade-in,
+  .sp-slide-up,
+  .sp-slide-down,
+  .sp-scale-in,
+  .sp-bounce {
+    animation: none !important;
+  }
+
+  .sp-card:hover {
+    transform: none !important;
+  }
+}
+
+/* =============================================
+   TOUCH TARGET UTILITIES
+   Ensures minimum 44x44px touch targets
+   ============================================= */
+
+.sp-touch-target {
+  position: relative;
+}
+
+.sp-touch-target::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* =============================================
+   DEBUG UTILITIES
+   For development only - remove in production
+   ============================================= */
+
+.sp-debug-border {
+  outline: 2px solid red !important;
+}
+
+.sp-debug-grid {
+  background-image:
+    linear-gradient(rgba(255, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: var(--sp-space-md) var(--sp-space-md);
+}
+
+/* =============================================
+   USAGE EXAMPLES (COMMENTED OUT)
+
+   Example 1 - Loading state:
+   <div class="sp-shimmer" style="height: 100px; width: 100%;"></div>
+
+   Example 2 - Truncated text:
+   <p class="sp-line-clamp-2">Long text that will be truncated...</p>
+
+   Example 3 - Skip link:
+   <a href="#main-content" class="sp-skip-link">Skip to main content</a>
+
+   Example 4 - Badge notification:
+   <button class="btn">
+     Inbox
+     <span class="sp-badge">3</span>
+   </button>
+
+   Example 5 - Card with hover effect:
+   <div class="sp-card">
+     <h3>Card Title</h3>
+     <p>Card content</p>
+   </div>
+
+   ============================================= */

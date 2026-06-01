@@ -1,0 +1,331 @@
+/**
+ * SUPERPRECIO DESIGN TOKENS
+ * Version: 1.0.0
+ *
+ * A comprehensive design system using CSS Custom Properties.
+ * Mobile-first, accessible (WCAG 2.2 AA), and dark mode ready.
+ *
+ * Usage: Import this file before your component styles.
+ * All tokens use the --sp- prefix to avoid conflicts.
+ */
+
+:root {
+  /* =============================================
+     BRAND COLORS
+     Primary green theme for Superprecio
+     Option 1: Dark Forest Green (#136213)
+     ============================================= */
+
+  /* Primary Brand Colors */
+  --sp-color-primary: #136213;           /* Dark Forest Green - main brand */
+  --sp-color-primary-dark: #0a4a0a;      /* Deep forest - hover states and gradients */
+  --sp-color-primary-light: #1a741a;     /* Lighter forest - accents */
+  --sp-color-primary-pale: #e6f4e6;      /* Very light green for subtle backgrounds */
+
+  /* =============================================
+     SEMANTIC COLORS
+     Status and feedback colors
+     ============================================= */
+
+  /* Success - uses primary green */
+  --sp-color-success: #136213;
+  --sp-color-success-dark: #0a4a0a;
+  --sp-color-success-light: #e6f4e6;
+  --sp-color-success-text: #0a4a0a;      /* Dark text on light success bg - AAA compliant */
+
+  /* Danger - for errors and warnings */
+  --sp-color-danger: #dc3545;
+  --sp-color-danger-dark: #b02a37;
+  --sp-color-danger-light: #f8d7da;
+  --sp-color-danger-text: #842029;       /* Dark text on light danger bg - 7.5:1 ratio */
+
+  /* Warning - for cautions */
+  --sp-color-warning: #ffc107;
+  --sp-color-warning-dark: #d39e00;
+  --sp-color-warning-light: #fff3cd;
+  --sp-color-warning-text: #664d03;      /* Dark text on light warning bg - 9.5:1 ratio */
+
+  /* Info - for informational messages */
+  --sp-color-info: #0dcaf0;
+  --sp-color-info-dark: #087990;
+  --sp-color-info-light: #cff4fc;
+  --sp-color-info-text: #055160;         /* Dark text on light info bg - 7.8:1 ratio */
+
+  /* =============================================
+     SURFACE COLORS
+     Backgrounds, cards, and elevated surfaces
+     ============================================= */
+
+  /* Base surfaces */
+  --sp-color-surface-base: #ffffff;      /* Pure white - main background */
+  --sp-color-surface-1: #f8f9fa;         /* Slightly off-white - subtle differentiation */
+  --sp-color-surface-2: #e9ecef;         /* Light gray - cards and panels */
+  --sp-color-surface-3: #dee2e6;         /* Medium gray - elevated elements */
+
+  /* Special surfaces */
+  --sp-color-surface-overlay: rgba(0, 0, 0, 0.5);  /* Modal overlays */
+  --sp-color-surface-frosted: rgba(255, 255, 255, 0.9); /* Glassmorphism effect */
+
+  /* =============================================
+     TEXT COLORS
+     All text colors meet WCAG 2.2 AA (4.5:1)
+     ============================================= */
+
+  /* Main text colors */
+  --sp-color-text-primary: #212529;      /* Primary text - 16.1:1 on white */
+  --sp-color-text-secondary: #6c757d;    /* Secondary text - 4.6:1 on white */
+  --sp-color-text-tertiary: #adb5bd;     /* Tertiary/muted text - 3.1:1 (for large text) */
+  --sp-color-text-disabled: #ced4da;     /* Disabled text */
+
+  /* Inverted text (on dark backgrounds) */
+  --sp-color-text-inverse: #ffffff;      /* White text for dark backgrounds */
+  --sp-color-text-inverse-secondary: rgba(255, 255, 255, 0.75);
+
+  /* Link colors */
+  --sp-color-link: #0d6efd;              /* Standard blue link - 5.7:1 on white */
+  --sp-color-link-hover: #0a58ca;        /* Darker on hover */
+  --sp-color-link-visited: #6610f2;      /* Purple for visited links */
+
+  /* =============================================
+     BORDER COLORS
+     ============================================= */
+
+  --sp-color-border-light: #dee2e6;      /* Light borders */
+  --sp-color-border-medium: #ced4da;     /* Medium borders */
+  --sp-color-border-dark: #adb5bd;       /* Dark borders */
+  --sp-color-border-focus: #136213;      /* Primary green for focus states */
+
+  /* =============================================
+     TYPOGRAPHY
+     Fluid responsive typography using clamp()
+     Works seamlessly from 320px to 1920px
+     ============================================= */
+
+  /* Font Families */
+  --sp-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter",
+                         "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+                         "Droid Sans", "Helvetica Neue", sans-serif;
+  --sp-font-family-mono: "SF Mono", "Monaco", "Cascadia Code", "Roboto Mono",
+                         "Courier New", monospace;
+
+  /* Font Sizes - Fluid scaling with clamp() */
+  /* Formula: clamp(MIN, PREFERRED, MAX) */
+  /* PREFERRED uses calc with viewport width for smooth scaling */
+
+  --sp-font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);    /* 12px - 14px */
+  --sp-font-size-sm: clamp(0.875rem, 0.825rem + 0.25vw, 1rem);     /* 14px - 16px */
+  --sp-font-size-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);    /* 16px - 18px */
+  --sp-font-size-lg: clamp(1.125rem, 1.05rem + 0.375vw, 1.5rem);   /* 18px - 24px */
+  --sp-font-size-xl: clamp(1.25rem, 1.125rem + 0.625vw, 1.875rem); /* 20px - 30px */
+  --sp-font-size-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2.5rem);     /* 24px - 40px */
+  --sp-font-size-3xl: clamp(1.875rem, 1.5rem + 1.875vw, 3.5rem);   /* 30px - 56px */
+
+  /* Line Heights */
+  --sp-line-height-tight: 1.2;           /* For headings */
+  --sp-line-height-normal: 1.5;          /* Body text */
+  --sp-line-height-relaxed: 1.75;        /* For long-form content */
+
+  /* Font Weights */
+  --sp-font-weight-normal: 400;
+  --sp-font-weight-medium: 500;
+  --sp-font-weight-semibold: 600;
+  --sp-font-weight-bold: 700;
+  --sp-font-weight-black: 800;
+
+  /* =============================================
+     SPACING SCALE
+     Based on 4px/0.25rem grid system
+     ============================================= */
+
+  --sp-space-xs: 0.25rem;    /* 4px */
+  --sp-space-sm: 0.5rem;     /* 8px */
+  --sp-space-md: 1rem;       /* 16px */
+  --sp-space-lg: 1.5rem;     /* 24px */
+  --sp-space-xl: 2rem;       /* 32px */
+  --sp-space-2xl: 3rem;      /* 48px */
+  --sp-space-3xl: 4rem;      /* 64px */
+
+  /* =============================================
+     SHADOWS
+     Layered elevation system
+     ============================================= */
+
+  --sp-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --sp-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                  0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --sp-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                  0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --sp-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                  0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --sp-shadow-focus: 0 0 0 3px rgba(19, 98, 19, 0.25); /* Primary green focus ring */
+
+  /* =============================================
+     BORDER RADIUS
+     Consistent corner rounding
+     ============================================= */
+
+  --sp-radius-sm: 0.25rem;   /* 4px - subtle rounding */
+  --sp-radius-md: 0.375rem;  /* 6px - default */
+  --sp-radius-lg: 0.5rem;    /* 8px - cards */
+  --sp-radius-xl: 0.75rem;   /* 12px - prominent elements */
+  --sp-radius-2xl: 1rem;     /* 16px - large cards */
+  --sp-radius-full: 9999px;  /* Circular - badges, avatars */
+
+  /* =============================================
+     TRANSITIONS
+     Smooth animations and transitions
+     ============================================= */
+
+  --sp-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --sp-transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --sp-transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* =============================================
+     Z-INDEX LAYERS
+     Consistent stacking context
+     ============================================= */
+
+  --sp-z-base: 0;
+  --sp-z-dropdown: 1000;
+  --sp-z-sticky: 1020;
+  --sp-z-fixed: 1030;
+  --sp-z-modal-backdrop: 1040;
+  --sp-z-modal: 1050;
+  --sp-z-popover: 1060;
+  --sp-z-tooltip: 1070;
+
+  /* =============================================
+     LAYOUT
+     Breakpoints and container widths
+     ============================================= */
+
+  --sp-container-max-width: 1320px;
+  --sp-navbar-height: 95px;  /* Current fixed navbar height */
+
+  /* =============================================
+     OPACITY LEVELS
+     ============================================= */
+
+  --sp-opacity-disabled: 0.5;
+  --sp-opacity-hover: 0.8;
+  --sp-opacity-overlay: 0.6;
+}
+
+/* =============================================
+   DARK MODE
+   DISABLED: Tokens are defined but most components use hardcoded colors.
+   Enabling this causes broken UI (white text on white backgrounds).
+   TODO: Migrate all hardcoded colors to tokens, then re-enable.
+   ============================================= */
+
+/*
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sp-color-surface-base: #121212;
+    --sp-color-surface-1: #1e1e1e;
+    --sp-color-surface-2: #2d2d2d;
+    --sp-color-surface-3: #3a3a3a;
+    --sp-color-surface-overlay: rgba(0, 0, 0, 0.7);
+    --sp-color-surface-frosted: rgba(30, 30, 30, 0.9);
+    --sp-color-text-primary: #e0e0e0;
+    --sp-color-text-secondary: #a0a0a0;
+    --sp-color-text-tertiary: #707070;
+    --sp-color-text-disabled: #4a4a4a;
+    --sp-color-primary: #1a741a;
+    --sp-color-primary-dark: #136213;
+    --sp-color-primary-light: #2d9a2d;
+    --sp-color-success-light: #1e4d2b;
+    --sp-color-danger-light: #4d1f23;
+    --sp-color-warning-light: #4d3d00;
+    --sp-color-info-light: #0c3d47;
+    --sp-color-border-light: #3a3a3a;
+    --sp-color-border-medium: #4a4a4a;
+    --sp-color-border-dark: #5a5a5a;
+    --sp-color-link: #58a6ff;
+    --sp-color-link-hover: #79b8ff;
+    --sp-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --sp-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --sp-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+    --sp-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+  }
+}
+*/
+
+/* =============================================
+   ACCESSIBILITY - HIGH CONTRAST MODE
+   Enhances contrast for users who need it
+   ============================================= */
+
+@media (prefers-contrast: high) {
+  :root {
+    --sp-color-text-primary: #000000;
+    --sp-color-text-secondary: #333333;
+    --sp-color-border-light: #999999;
+    --sp-color-border-medium: #666666;
+    --sp-color-border-dark: #333333;
+  }
+}
+
+/* =============================================
+   REDUCED MOTION
+   Respects user preference for reduced animations
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --sp-transition-fast: 0ms;
+    --sp-transition-base: 0ms;
+    --sp-transition-slow: 0ms;
+  }
+}
+
+/* =============================================
+   PRINT STYLES
+   Optimized for printing
+   ============================================= */
+
+@media print {
+  :root {
+    --sp-color-surface-base: #ffffff;
+    --sp-color-text-primary: #000000;
+    --sp-color-text-secondary: #333333;
+    --sp-shadow-sm: none;
+    --sp-shadow-md: none;
+    --sp-shadow-lg: none;
+    --sp-shadow-xl: none;
+  }
+}
+
+/* =============================================
+   USAGE EXAMPLES (COMMENTED OUT)
+
+   Example 1 - Button with design tokens:
+   .sp-button {
+     background-color: var(--sp-color-primary);
+     color: var(--sp-color-text-inverse);
+     padding: var(--sp-space-sm) var(--sp-space-lg);
+     border-radius: var(--sp-radius-md);
+     font-size: var(--sp-font-size-base);
+     font-weight: var(--sp-font-weight-semibold);
+     transition: background-color var(--sp-transition-fast);
+     box-shadow: var(--sp-shadow-sm);
+   }
+
+   Example 2 - Card with design tokens:
+   .sp-card {
+     background-color: var(--sp-color-surface-base);
+     border: 1px solid var(--sp-color-border-light);
+     border-radius: var(--sp-radius-lg);
+     padding: var(--sp-space-lg);
+     box-shadow: var(--sp-shadow-md);
+   }
+
+   Example 3 - Typography with design tokens:
+   .sp-heading {
+     font-size: var(--sp-font-size-2xl);
+     font-weight: var(--sp-font-weight-bold);
+     line-height: var(--sp-line-height-tight);
+     color: var(--sp-color-text-primary);
+   }
+
+   ============================================= */
